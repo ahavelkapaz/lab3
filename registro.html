@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset="text/html;charset=ISO-8859-1">
+		<script src="/js/jquery-3.1.0.min.js"></script>
+		<script>
+		//Validacion del Nombre
+		function checkName()
+		{
+			var inputN = document.getElementById("nombre");
+			var reg=/([a-zA-Z]+)\s([a-zA-Z]+)\s{0,1}([a-zA-Z]*)/; ///^[a-z ,.'-]+$/i    si aceptamos apóstrofes
+			if(inputN.value=='')	return false;
+			return(reg.test(inputN.value));
+		}
+
+		//Validacion mail
+		function checkMail()
+		{
+			var inputN = document.getElementById("email");
+			var reg=/([a-zA-Z]+)\d{3}@(ikasle\.){0,1}ehu\.(eus|es)/;
+			if(inputN.value == '')	return false;
+			return(reg.test(inputN.value));
+			return true;
+		}
+
+		//Validacion Password
+		function checkPass()
+		{
+			var inputN = document.getElementById("password");
+			var reg=/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?&]).{8,16}/;
+			if(inputN.value=='')	return false;
+			return(reg.test(inputN.value));
+			return true;
+		}
+
+		//Validacion Telefono
+		function checkNumber()
+		{
+			var inputN = document.getElementById("telefono");
+			var reg=/(\+\d{2}){0,1}\d{9}/;
+			if(inputN.value=='')	return false;
+			return(reg.test(inputN.value));
+			return true;
+		}
+
+		//Comprobación que todos los elementos cumplan las reglas definidas 
+		function checkValues()
+		{	
+			if(!checkName())
+			{
+				alert("Debes introducir tu nombre y uno o dos apellidos.");
+				return false;
+			}
+			//alert("nombre");
+			if(!checkMail())
+			{
+				alert("El correo debe tener el formato de la UPV/EHU");
+				return false;
+			}
+			//alert("mail");
+			if(!checkPass())
+			{
+				alert("Formato mínimo => 1 mayúscula, 1 minúscula, 1 dígito y 1 Carácter especial. La longitud debe ser entre 8 y 16 caracteres.");
+				return false;
+			}
+			//alert("pass");
+			if(!checkNumber())
+			{
+				alert("Introduce mínimo 9 dígitos (máximo 25). También puedes incluir prefijos del formato +NN, un número con prefijo será de esta forma: +34943121212 .");
+				return false;
+			}
+			
+		return true;
+		}
+		
+		</script>
+	</head>
+
+	<body>
+		<form id='registro' name='registro' onSubmit="return checkValues()" action="oraculo.php" method="POST" enctype="multipart/form-data">
+		
+			<fieldset>Nombre y Apellidos(*):<br>
+			<input type="text" name="nombre" id="nombre">
+			
+			<br>Dirección de correo(*):<br>
+			<input type="text" name="email" id="email">
+			
+			<br>Password(*):<br>
+			<input type="password" name="password" id="password">
+			
+			<br>Número de Teléfono(*):<br>
+			<input type="text" name="telefono" id="telefono">
+
+			<br>Especialidad<br>
+			<select name="selectE" id="selectE">
+				<option value="IS" selected>Ingeniería del Software</option>
+				<option value="IC">Ingeniería de Computadores</option>
+				<option value="C">Computacióm</option>
+				<option value="O" >Otros</option>
+			</select>
+			<br> 
+			
+			<br>
+			<fieldset>
+			<legend>Tecnologías y herramientas en las que está interesado:</legend>
+			 <textarea rows="4" cols="50">
+			</textarea> 
+			</fieldset>
+			
+			<br>Avatar:<br>
+			<input type="file" name="fileToUpload" id="fileToUpload" accept="image/*">
+			</fieldset>
+			<br>
+			
+			<input type="submit" value="Submit">
+			
+		</form> 
+
+
+	</body>
+</html>
