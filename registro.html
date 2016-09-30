@@ -26,20 +26,21 @@
 
 	<body>
 	
-		<form id='registro' name='registro' onSubmit="return checkValues()" action="oraculo.php" method="POST" enctype="multipart/form-data">
+		<form id='registro' name='registro' onSubmit="return checkValues()" action="registrar.php" method="POST" enctype="multipart/form-data">
 			<fieldset> 
+			<legend>Formulario de Registro</legend>
 			Nombre y Apellidos(*):<br>
 			<table>
 				<td><input type="text" name="nombre" id="nombre" pattern="([a-zA-Z]+)\s([a-zA-Z]+)\s{0,1}([a-zA-Z]*)" required title="Debes introducir tu nombre y uno o dos apellidos."></td>
 				<col width="80">
-				<td><img id="output" style="max-height:500px;max-width:500px;width: expression(this.width > 500 ? 500: true);height: expression(this.height > 500 ? 500: true);"/></td>
+				<td><img id="output" name="image2" style="max-height:500px;max-width:500px;width: expression(this.width > 500 ? 500: true);height: expression(this.height > 500 ? 500: true);"/></td>
 			</table>
 			
 			<br> Dirección de correo(*):<br>
-			<input type="text" name="email" id="email" pattern ="([a-zA-Z]+)\d{3}@(ikasle\.){0,1}ehu\.(eus|es)" required title="El correo debe tener el formato de la UPV/EHU">
+			<input type="text" name="email" id="email" pattern ="([a-zA-Z]{2,})\d{3}@(ikasle\.){0,1}ehu\.(eus|es)" required title="El correo debe tener el formato de la UPV/EHU">
 			
 			<br> Password(*):<br>
-			<input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?&]).{8,16}" required
+			<input type="password" name="password" id="password" value="$superPass21" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?&]).{8,16}" required
 			title="Formato mínimo => 1 mayúscula, 1 minúscula, 1 dígito y 1 Carácter especial. La longitud debe ser entre 8 y 16 caracteres.">
 			
 			<br>Número de Teléfono(*):<br>
@@ -59,16 +60,16 @@
 			<input class="hideme" id="hideotros" type="text" name="name">
 			<br> 
 			<br>
-			<fieldset>
 			
-			<legend>Tecnologías y herramientas en las que está interesado:</legend>
-			<textarea rows="4" cols="50">
+			
+			<h4>Tecnologías y herramientas en las que está interesado:</h4>
+			<textarea name="tech" rows="4" cols="50">
 			</textarea> 
-			</fieldset>
+			
 			<br>
 			
 			Avatar:<br>
-			<input type="file" name="fileToUpload" id="fileToUpload" accept="image/*" onchange="loadFile(event)">
+			<input type="file" name="image" id="fileToUpload" accept="image/*" onchange="loadFile(event)">
 
 			</fieldset>
 			<br>
