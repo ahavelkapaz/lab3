@@ -40,7 +40,7 @@
 			<input type="text" name="email" id="email" pattern ="([a-zA-Z]{2,})\d{3}@(ikasle\.){0,1}ehu\.(eus|es)" required title="El correo debe tener el formato de la UPV/EHU">
 			
 			<br> Password(*):<br>
-			<input type="password" name="password" id="password" value="$superPass21" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?&]).{8,16}" required
+			<input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*#?&]).{8,16}" required
 			title="Formato mínimo => 1 mayúscula, 1 minúscula, 1 dígito y 1 Carácter especial. La longitud debe ser entre 8 y 16 caracteres.">
 			
 			<br>Número de Teléfono(*):<br>
@@ -63,7 +63,7 @@
 			
 			
 			<h4>Tecnologías y herramientas en las que está interesado:</h4>
-			<textarea name="tech" rows="4" cols="50">
+			<textarea name="tech" id="tech" rows="4" cols="50">
 			</textarea> 
 			
 			<br>
@@ -73,9 +73,10 @@
 
 			</fieldset>
 			<br>
-			<input type="submit" value="Submit">
+			<input type="submit" id="registrarB" name="registrarB" value="Submit">
 		</form> 
-		
+		<div id="mensaje" name="mensaje">
+		</div>
 	</body>
 	
 </html>

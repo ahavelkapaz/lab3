@@ -1,35 +1,29 @@
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
 <?php
 
- require_once 'db_config.php';
+	require_once 'db_config.php';
+	   
+	$sql="SELECT * FROM users";
+	$result = mysqli_query($conn,$sql);
 
+	if ($result) {
+		echo '<table class="table table-bordered" > <tr> <th>Nombre y apellidos</th><th>E-mail</th><th>Teléfono</th><th>Fecha de registro</th><th>Especialidad</th><th>Tecnologías y herramientas de interés</th><th>Foto de perfil</th></td>';
+		while ($row = mysqli_fetch_array( $result )) {
+			echo '<tr> <td>' . $row['name'] . '</td><td>' . $row['email'] . '</td><td>' . $row['phone'] . '</td><td>' . $row['date'] . '</td><td>' . $row['department'] . '</td><td>' . $row['tech_tools'] .'</td>'; 
+			echo '<td><img src="data:image/jpeg;base64,' . base64_encode($row['avatar']) . '" /></td></tr>';
 
-
-   // Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-
-   
-$sql="SELECT * FROM users";
-$result = mysqli_query($conn,$sql);
-
-if ($result) {
-	echo '<table border=1>';
-    while ($row = mysqli_fetch_array( $result )) {
-		echo '<tr> <td>Nombre=' . $row['name'] . '</td><td> Email=' . $row['email'] . '</td><td> Phone= ' . $row['phone'] . '</td><td> Fecha Reg=' . $row['date'] . '</td><td> Especialidad==' . $row['speciality'] . ''; /* <img src="data:image/jpeg;base64,<?php echo base64_encode($image); ?>" /> */
-		echo '<td><img src="data:image/jpeg;base64,' . base64_encode($row['image']) . '" /></td></tr>';
-
+		}
+		echo '</table>';
 	}
-	echo '</table>';
-}
-else{
-	echo "Vacio";
-}
+	else{
+		echo "Vacio";
+	}
 
-mysqli_close($conn);
-
-
+	mysqli_close($conn);
 
 ?>
